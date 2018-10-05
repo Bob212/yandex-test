@@ -67,7 +67,7 @@ gulp.task('watch', function(){
     watch([path.watch.style], function(event, cb) {
         gulp.start('style:dist');
     });
-    watch([path.watch.js], function(event, cb) {
+    watch([path.watch.json], function(event, cb) {
         gulp.start('json:dist');
     });
 });
