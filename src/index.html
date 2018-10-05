@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Расписание Yandex</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+		/* resets */
+* { color: inherit; }
+input { font: inherit; border: unset; background: unset; }
+input:focus { outline: unset; }
+
+#app {
+	display: flex;
+	flex-direction: column; justify-content: center; align-items: center;
+	width: 100vw; height: 100vh;
+	font-weight: 900; font-size: 2rem;
+	color: hsl(0, 0%, 100%);
+	background: hsl(240, 100%, 67%);
+
+	font-family: 'Roboto', sans-serif;
+}
+
+input { text-align: center; }
+
+img {
+	width: 8rem; height: 8rem;
+	vertical-align: calc(-0.12109375em);
+}
+table {
+	width: 80%;
+	margin-bottom: 50px;
+}
+table tr {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #000;
+	padding: 20px 0;
+	flex-wrap: nowrap;
+}
+table tr:hover {
+	background: rgba(0,0,0,.3);
+	cursor: pointer;
+}
+table tr td {
+	flex-basis: 25%;
+	padding-right: 30px;
+}
+table tr td:nth-child(1) {
+	flex-basis: 8%;
+}
+table tr td:nth-child(1) {
+	flex-basis: 8%;
+}
+.buttons, input {
+	width: 80%;
+	text-align: left;
+
+	margin-bottom: 20px;
+}
+.buttons a {
+	text-decoration: underline;
+	margin-right: 20px;
+}
+.buttons a.active {
+	text-decoration: none;
+	color: #fffe1a;
+}
+
+
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="buttons">
+		<a id="arrBtn" href="#" class="active">Прибытие</a>
+		<a id="depBtn" href="#">Отправление</a>
+	</div>
+	<input id="search" type="text" placeholder="Поиск по номеру рейса">
+
+	<table><!-- здесь будут рейсы --></table>
+
+	<div class="buttons">
+	<a href="#" id="delay-button">
+		Показать только задержанные рейсы
+	</a>
+	</div>
+</div>
+
+	
+	<!-- пример тут https://www.svo.aero/ru/timetable/departure?date=today&period=16:00-18:00&terminal=all -->
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "timetable.json", true);
+		xhr.send();
+		var currentState = "arrival";	// какие строки сейчас отображаем: arrival / departure
+
+		xhr.onreadystatechange = function() {
+			if ( xhr.readyState != 4 ) return;
+			if ( xhr.status != 200 ) {
+				console.log(xhr.status + " : " + xhr.statusText );
+			} else {
+				var flight = JSON.parse(xhr.responseText);	// массив с рейсами
+				for (var i = 0; i< flight.length; i++) {
+					if ( flight[i].arrivalAirportFsCode == "SVO" ) {	// прилетает в наш аэропорт
+						// Время прилета
+						var timeFull = flight[i].arrivalDate.dateUtc;
+						var timeCache = timeFull.match( /\d{1,}/g );
+						var timeForShow = checkHours( Number(timeCache[3])+3 ) + ":" + timeCache[4];	// ошибка!!! если больше 24
+						// Город откуда летит
+						var whereFromCode = flight[i].departureAirportFsCode;
+						// Номер рейса
+						var flightNumber = flight[i].flightNumber;
+						// Статус рейса
+						var status = flight[i].status;
+
+						createRowDeparture(timeForShow, whereFromCode, flightNumber, status);	// создаем строку в таблице
+					} else {	// вылет из нашего аэропорта
+						// Время вылета
+						var timeFull = flight[i].departureDate.dateUtc;
+						var timeCache = timeFull.match( /\d{1,}/g );
+						var timeForShow = checkHours(Number(timeCache[3])+3) + ":" + timeCache[4];	// ошибка!!! если больше 24
+						// Город куда летит
+						var whereToGo = flight[i].arrivalAirportFsCode;
+						// Номер рейса
+						var flightNumber = flight[i].flightNumber;
+						// Статус рейса
+						var status = flight[i].status;
+
+						createRowArrival(timeForShow, whereToGo, flightNumber, status);	// создаем строку в таблице
+					}
+				}
+			}
+			showOnly(currentState);	// когда загрузилась страница - по умолчанию выводим только "прибытие"
+		}
+		function createRowArrival(time, city, number, status) {	// создаем строку для вылетающих от нас
+			var row = document.createElement('tr');
+			row.setAttribute("data-flight-type", "arrival");
+			$(row).append("<td>"+ time +"</td>");
+			$(row).append("<td>"+ city +"</td>");
+			$(row).append("<td>"+ number +"</td>");
+			var statusText = "-----";
+			switch (status) {
+				case 'A': 
+				statusText = "Ожидается посадка";
+				break;
+
+				case 'C': 
+				statusText = "Отменен";
+				break;
+
+				case 'L': 
+				statusText = "Приземлился";
+				break;
+
+				case 'D': 
+				statusText = "Задержка";
+				break;
+
+				default: 
+				statusText = "-----";
+			}
+			$(row).append("<td>"+ statusText +"</td>");
+
+			$(row).appendTo("#app table");
+		}
+		function checkHours(hoursNum) {
+			if ( hoursNum > 24 ) {
+				hoursNum = hoursNum-24;
+			}
+			return hoursNum;
+		}
+		function createRowDeparture(time, city, number, status) {	// создаем строку для прилетающих к нам
+			var row = document.createElement('tr');
+			row.setAttribute("data-flight-type", "departure");
+			$(row).append("<td>"+ time +"</td>");
+			$(row).append("<td>"+ city +"</td>");
+			$(row).append("<td>"+ number +"</td>");
+			var statusText = "-----";
+			switch (status) {
+				case 'A': 
+				statusText = "Ожидается посадка";
+				break;
+
+				case 'C': 
+				statusText = "Отменен";
+				break;
+
+				case 'L': 
+				statusText = "Приземлился";
+				break;
+
+				case 'D': 
+				statusText = "Задержка";
+				break;
+
+				default: 
+				statusText = "-----";
+			}
+
+			$(row).append("<td>"+ statusText +"</td>");
+
+			$(row).appendTo("#app table");
+		}
+		function showOnly(whatToShow) {	// скрывает все строки кроме тех, которые указаны
+			$("#delay-button").text("Показать только задержанные рейсы");	// сбрасываем кнопку "Показать только задержанные рейсы"
+			$("#search").val("");	// сбрасываем строку поиска
+			$("#app table tr").each(function(index) {
+				if ( $(this).attr("data-flight-type") != whatToShow ) {
+					$(this).hide();	// скрываем не те строки
+				} else {
+					$(this).show();	// показываем нужные строки
+				}
+			});
+		}
+		$("#arrBtn").click(function(e){	// клик по кнопке: Прибытие
+			e.preventDefault();
+			$(this).addClass('active');
+			$("#depBtn").removeClass('active');
+			currentState = "arrival";
+			showOnly(currentState);
+		});
+		$("#depBtn").click(function(e){	// клик по кнопке: Отправление
+			e.preventDefault();
+			$(this).addClass('active');
+			$("#arrBtn").removeClass('active');
+			currentState = "departure";
+			showOnly(currentState);
+		});
+		$("#delay-button").click(function(e){	// клик по кнопке: Показать только задержанные рейсы
+			e.preventDefault();
+			if ( $("#delay-button").text() == "Показать все" ) {	// если кнопка была уже нажата - показываем все
+				showOnly(currentState);
+				return;
+			}
+			$("#delay-button").text("Показать все");
+			$("#app table tr").each(function(){
+				if ( $("td:last-child", this).text() != "Задержка" ) {
+					$(this).hide();
+				}
+			});
+		});
+		$("#search").change(function(){	// Поиск по номеру рейса
+			$("#app table tr").each(function(){
+				if ( $("td:nth-child(3)", this).text() != $("#search").val().trim() ) {
+					$(this).hide();
+				} else {
+					$(this).show();
+				}
+				if ( $("#search").val().trim() == "" ) {
+					showOnly(currentState);	// если поле пустое показываем все строки
+				}
+			})
+		});
+		
+	</script>
+</body>
+</html>

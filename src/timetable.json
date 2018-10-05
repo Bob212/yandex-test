@@ -1,0 +1,298 @@
+[
+  {
+   "flightId": 317846653,
+   "carrierFsCode": "SU",
+   "flightNumber": "2437",
+   "departureAirportFsCode": "SVO",
+   "arrivalAirportFsCode": "BUD",
+   "departureDate": {
+    "dateLocal": "2013-12-07T10:50:00.000",
+    "dateUtc": "2013-12-07T23:50:00.000Z"
+   },
+   "arrivalDate": {
+    "dateLocal": "2013-12-07T10:35:00.000",
+    "dateUtc": "2013-12-07T09:35:00.000Z"
+   },
+   "status": "C",
+   "schedule": {
+    "flightType": "J",
+    "serviceClasses": "RJY",
+    "restrictions": ""
+   },
+   "operationalTimes": {
+    "publishedDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "publishedArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "scheduledGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "estimatedGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "actualGateDeparture": {
+     "dateLocal": "2013-12-07T11:27:00.000",
+     "dateUtc": "2013-12-07T07:27:00.000Z"
+    },
+    "scheduledGateArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "estimatedGateArrival": {
+     "dateLocal": "2013-12-07T11:12:00.000",
+     "dateUtc": "2013-12-07T10:12:00.000Z"
+    },
+    "actualGateArrival": {
+     "dateLocal": "2013-12-07T10:43:00.000",
+     "dateUtc": "2013-12-07T09:43:00.000Z"
+    }
+   },
+   "delays": {
+    "departureGateDelayMinutes": 37,
+    "arrivalGateDelayMinutes": 8
+   },
+   "flightDurations": {
+    "scheduledBlockMinutes": 165,
+    "blockMinutes": 136
+   },
+   "airportResources": {
+    "departureTerminal": "D",
+    "departureGate": "28",
+    "arrivalTerminal": "2"
+   },
+   "flightEquipment": {
+    "scheduledEquipmentIataCode": "320",
+    "actualEquipmentIataCode": "A320",
+    "tailNumber": "VP-BWI"
+   }
+  },
+
+
+  {
+   "flightId": 317846653,
+   "carrierFsCode": "SU",
+   "flightNumber": "3337",
+   "departureAirportFsCode": "SVO",
+   "arrivalAirportFsCode": "COS",
+   "departureDate": {
+    "dateLocal": "2013-12-07T10:50:00.000",
+    "dateUtc": "2013-12-07T06:50:00.000Z"
+   },
+   "arrivalDate": {
+    "dateLocal": "2013-12-07T10:35:00.000",
+    "dateUtc": "2013-12-07T09:35:00.000Z"
+   },
+   "status": "L",
+   "schedule": {
+    "flightType": "J",
+    "serviceClasses": "RJY",
+    "restrictions": ""
+   },
+   "operationalTimes": {
+    "publishedDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "publishedArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "scheduledGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "estimatedGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "actualGateDeparture": {
+     "dateLocal": "2013-12-07T11:27:00.000",
+     "dateUtc": "2013-12-07T07:27:00.000Z"
+    },
+    "scheduledGateArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "estimatedGateArrival": {
+     "dateLocal": "2013-12-07T11:12:00.000",
+     "dateUtc": "2013-12-07T10:12:00.000Z"
+    },
+    "actualGateArrival": {
+     "dateLocal": "2013-12-07T10:43:00.000",
+     "dateUtc": "2013-12-07T09:43:00.000Z"
+    }
+   },
+   "delays": {
+    "departureGateDelayMinutes": 37,
+    "arrivalGateDelayMinutes": 8
+   },
+   "flightDurations": {
+    "scheduledBlockMinutes": 165,
+    "blockMinutes": 136
+   },
+   "airportResources": {
+    "departureTerminal": "D",
+    "departureGate": "28",
+    "arrivalTerminal": "2"
+   },
+   "flightEquipment": {
+    "scheduledEquipmentIataCode": "320",
+    "actualEquipmentIataCode": "A320",
+    "tailNumber": "VP-BWI"
+   }
+  },
+
+
+  {
+   "flightId": 317846653,
+   "carrierFsCode": "SU",
+   "flightNumber": "2030",
+   "departureAirportFsCode": "BRA",
+   "arrivalAirportFsCode": "SVO",
+   "departureDate": {
+    "dateLocal": "2013-12-07T10:50:00.000",
+    "dateUtc": "2013-12-07T06:50:00.000Z"
+   },
+   "arrivalDate": {
+    "dateLocal": "2013-12-07T10:35:00.000",
+    "dateUtc": "2013-12-07T09:35:00.000Z"
+   },
+   "status": "L",
+   "schedule": {
+    "flightType": "J",
+    "serviceClasses": "RJY",
+    "restrictions": ""
+   },
+   "operationalTimes": {
+    "publishedDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "publishedArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "scheduledGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "estimatedGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "actualGateDeparture": {
+     "dateLocal": "2013-12-07T11:27:00.000",
+     "dateUtc": "2013-12-07T07:27:00.000Z"
+    },
+    "scheduledGateArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "estimatedGateArrival": {
+     "dateLocal": "2013-12-07T11:12:00.000",
+     "dateUtc": "2013-12-07T10:12:00.000Z"
+    },
+    "actualGateArrival": {
+     "dateLocal": "2013-12-07T10:43:00.000",
+     "dateUtc": "2013-12-07T09:43:00.000Z"
+    }
+   },
+   "delays": {
+    "departureGateDelayMinutes": 37,
+    "arrivalGateDelayMinutes": 8
+   },
+   "flightDurations": {
+    "scheduledBlockMinutes": 165,
+    "blockMinutes": 136
+   },
+   "airportResources": {
+    "departureTerminal": "D",
+    "departureGate": "28",
+    "arrivalTerminal": "2"
+   },
+   "flightEquipment": {
+    "scheduledEquipmentIataCode": "320",
+    "actualEquipmentIataCode": "A320",
+    "tailNumber": "VP-BWI"
+   }
+  },
+  {
+   "flightId": 317846653,
+   "carrierFsCode": "SU",
+   "flightNumber": "2034",
+   "departureAirportFsCode": "JAP",
+   "arrivalAirportFsCode": "SVO",
+   "departureDate": {
+    "dateLocal": "2013-12-07T10:50:00.000",
+    "dateUtc": "2013-12-07T06:50:00.000Z"
+   },
+   "arrivalDate": {
+    "dateLocal": "2013-12-07T10:35:00.000",
+    "dateUtc": "2013-12-07T10:40:00.000Z"
+   },
+   "status": "D",
+   "schedule": {
+    "flightType": "J",
+    "serviceClasses": "RJY",
+    "restrictions": ""
+   },
+   "operationalTimes": {
+    "publishedDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "publishedArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "scheduledGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "estimatedGateDeparture": {
+     "dateLocal": "2013-12-07T10:50:00.000",
+     "dateUtc": "2013-12-07T06:50:00.000Z"
+    },
+    "actualGateDeparture": {
+     "dateLocal": "2013-12-07T11:27:00.000",
+     "dateUtc": "2013-12-07T07:27:00.000Z"
+    },
+    "scheduledGateArrival": {
+     "dateLocal": "2013-12-07T10:35:00.000",
+     "dateUtc": "2013-12-07T09:35:00.000Z"
+    },
+    "estimatedGateArrival": {
+     "dateLocal": "2013-12-07T11:12:00.000",
+     "dateUtc": "2013-12-07T10:12:00.000Z"
+    },
+    "actualGateArrival": {
+     "dateLocal": "2013-12-07T10:43:00.000",
+     "dateUtc": "2013-12-07T09:43:00.000Z"
+    }
+   },
+   "delays": {
+    "departureGateDelayMinutes": 37,
+    "arrivalGateDelayMinutes": 8
+   },
+   "flightDurations": {
+    "scheduledBlockMinutes": 165,
+    "blockMinutes": 136
+   },
+   "airportResources": {
+    "departureTerminal": "D",
+    "departureGate": "28",
+    "arrivalTerminal": "2"
+   },
+   "flightEquipment": {
+    "scheduledEquipmentIataCode": "320",
+    "actualEquipmentIataCode": "A320",
+    "tailNumber": "VP-BWI"
+   }
+  }
+]
